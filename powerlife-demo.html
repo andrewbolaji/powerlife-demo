@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerLife Yoga Barre Fitness</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2E75B6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .cta-button {
+            background: #2E75B6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2E75B6 0%, #5BA3D0 100%);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-button {
+            background: white;
+            color: #2E75B6;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: not-allowed;
+            opacity: 0.9;
+            transition: transform 0.3s;
+        }
+
+        .hero-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Intro Section */
+        .intro {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            color: #2E75B6;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Locations Section */
+        .locations {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .locations h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2E75B6;
+            margin-bottom: 3rem;
+        }
+
+        .location-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: not-allowed;
+            opacity: 0.9;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .location-card h3 {
+            color: #2E75B6;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Classes Section */
+        .classes {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .classes h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2E75B6;
+            margin-bottom: 3rem;
+        }
+
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .class-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #2E75B6;
+            transition: all 0.3s;
+            cursor: not-allowed;
+            opacity: 0.9;
+        }
+
+        .class-card:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+
+        .class-card h3 {
+            color: #2E75B6;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .class-tag {
+            display: inline-block;
+            background: #2E75B6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Intro Offer Section */
+        .intro-offer {
+            background: linear-gradient(135deg, #2E75B6 0%, #5BA3D0 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .intro-offer h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .intro-offer p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Chat Widget Button */
+        #chat-widget-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #2E75B6;
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        #chat-widget-button:hover {
+            transform: scale(1.1);
+            background: #5BA3D0;
+        }
+
+        #chat-widget-button svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        /* Chat Widget Container */
+        #chat-widget-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 400px;
+            height: 600px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #chat-widget-container.open {
+            display: flex;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #2E75B6 0%, #5BA3D0 100%);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .chat-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .close-chat:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        #retell-chat-iframe {
+            flex: 1;
+            border: none;
+            width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            #chat-widget-container {
+                width: calc(100vw - 20px);
+                height: calc(100vh - 120px);
+                right: 10px;
+                bottom: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">PowerLife</div>
+            <ul class="nav-links">
+                <li><a href="#">Classes</a></li>
+                <li><a href="#">Locations</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <a href="#" class="cta-button">Book a Class</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Power Life Yoga Barre Fitness</h1>
+            <h2>Find Your Fire</h2>
+            <p>We are a place to meet people. We are a place to meet yourself. We are a place to meet your goals. We are Power Life!</p>
+            <div class="hero-buttons">
+                <a href="#" class="hero-button">Get Started - $10 Intro Week</a>
+                <a href="#" class="hero-button secondary">Explore Classes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro">
+        <h2>What does it mean to find your fire?</h2>
+        <p>Heat plays a major role in Power Life's identity. Of course, the majority of our classes are taught in a heated or semi-heated environment. But we challenge our students to dive a little deeper than that. We hope the time spent in our studios helps students ignite a spark within that inspires them to reach for their very best lives.</p>
+    </section>
+
+    <!-- Locations -->
+    <section class="locations">
+        <h2>Our Locations</h2>
+        <div class="location-grid">
+            <div class="location-card">
+                <div class="location-icon">📍</div>
+                <h3>Des Moines</h3>
+                <p>Iowa</p>
+            </div>
+            <div class="location-card">
+                <div class="location-icon">📍</div>
+                <h3>Kansas City</h3>
+                <p>Missouri/Kansas</p>
+            </div>
+            <div class="location-card">
+                <div class="location-icon">📍</div>
+                <h3>Omaha</h3>
+                <p>Nebraska</p>
+            </div>
+            <div class="location-card">
+                <div class="location-icon">📍</div>
+                <h3>Tulsa</h3>
+                <p>Oklahoma</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes -->
+    <section class="classes">
+        <h2>Our Classes</h2>
+        <div class="class-grid">
+            <div class="class-card">
+                <h3>Power Yoga</h3>
+                <span class="class-tag">All Levels</span>
+                <p>From beginner-friendly Power Yoga 1 to advanced Power Yoga 2, we have flows for every experience level.</p>
+            </div>
+            <div class="class-card">
+                <h3>Hot Flow + Weights</h3>
+                <span class="class-tag">Heated</span>
+                <p>Combine yoga flow with light weights in our heated room for strength and flexibility.</p>
+            </div>
+            <div class="class-card">
+                <h3>Power Barre</h3>
+                <span class="class-tag">Fitness</span>
+                <p>Ballet-inspired workout that tones and strengthens using the ballet barre.</p>
+            </div>
+            <div class="class-card">
+                <h3>Power Sculpt</h3>
+                <span class="class-tag">Strength</span>
+                <p>Full-body conditioning workout with weights and resistance training.</p>
+            </div>
+            <div class="class-card">
+                <h3>Restore</h3>
+                <span class="class-tag">Relaxation</span>
+                <p>Gentle, relaxing practice perfect for recovery and stress relief.</p>
+            </div>
+            <div class="class-card">
+                <h3>F.I.T.</h3>
+                <span class="class-tag">High Intensity</span>
+                <p>Functional Interval Training with cardio and strength combined.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Offer -->
+    <section class="intro-offer">
+        <h2>New Student Offer</h2>
+        <div class="price">$10</div>
+        <p>Unlimited classes for 7 consecutive days</p>
+        <p>Try all our class types and find what resonates with you!</p>
+        <a href="#" class="hero-button">Claim Your Intro Week</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Power Life. All Rights Reserved.</p>
+        <p>Built with 🤍 for wellness</p>
+    </footer>
+
+    <!-- Chat Widget Button -->
+    <div id="chat-widget-button" onclick="toggleChat()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+    </div>
+
+    <!-- Chat Widget Container -->
+    <div id="chat-widget-container">
+        <div class="chat-header">
+            <div>
+                <h3>PowerLife Chat</h3>
+                <p>Ask Sarah anything about our classes!</p>
+            </div>
+            <button class="close-chat" onclick="toggleChat()">×</button>
+        </div>
+        <iframe 
+            id="retell-chat-iframe"
+            allow="microphone"
+        ></iframe>
+    </div>
+
+    <script>
+        // Retell Configuration
+        const RETELL_AGENT_ID = 'agent_33d801a974e7b8dd6338f6e1a1';
+        const RETELL_API_KEY = 'key_d7b65a09eb0fbddf0b7594480956';
+
+        function toggleChat() {
+            const container = document.getElementById('chat-widget-container');
+            const iframe = document.getElementById('retell-chat-iframe');
+            
+            container.classList.toggle('open');
+            
+            // Load Retell chat on first open
+            if (container.classList.contains('open') && !iframe.src) {
+                // Initialize Retell Web SDK
+                iframe.src = `https://api.retellai.com/chat-widget?agentId=${RETELL_AGENT_ID}&apiKey=${RETELL_API_KEY}`;
+            }
+        }
+
+        // Close chat if clicking outside
+        document.addEventListener('click', function(event) {
+            const container = document.getElementById('chat-widget-container');
+            const button = document.getElementById('chat-widget-button');
+            
+            if (container.classList.contains('open') && 
+                !container.contains(event.target) && 
+                !button.contains(event.target)) {
+                container.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
